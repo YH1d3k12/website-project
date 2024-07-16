@@ -13,9 +13,11 @@
 
 :root {
     /* Colors */
+    --dark-purple: #0b011a;
     --veil: #00000040;
     --onyx: #33363F;
     --eerie-black: #151716;
+    --vermilion: #e14533;
     --white: #FFFFFF;
 
     /* Scroll */
@@ -24,6 +26,15 @@
 
     /* Body */
     --body-background-color: var(--onyx);
+
+    /* Navbar */
+    --navbar-background-color: var(--dark-purple);
+    --navbar-title-color: var(--white);
+    --navbar-title-span-color: var(--vermilion);
+    --navbar-links-color: var(--white);
+    --navbar-links-hover-color: var(--white);
+    --navbar-links-hover-background-color: var(--vermilion);
+
 }
 
 .scroll-y {
