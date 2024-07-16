@@ -19,6 +19,17 @@
     box-shadow: 0px 0px 10px 0px black;
 }
 
+@media (max-width: 768px) {
+    .navbar {
+        height: 60px;
+    }
+
+    .navbar-background {
+        padding: 0px 10px;
+        width: 100%;
+    }
+}
+
 /*------------------------- Title -------------------------*/
 
 .navbar-title {
@@ -28,6 +39,18 @@
 
 .navbar-title span {
     color: rgb(225, 69, 51);
+}
+
+@media (max-width: 768px) {
+    .navbar-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-title {
+        font-size: 1.2rem;
+    }
 }
 
 /*------------------------- Links -------------------------*/
@@ -63,9 +86,34 @@
     color: white !important;
 }
 
+@media (max-width: 768px) {
+    .navbar-links li {
+        width: 70px;
+    }
+
+    .navbar-links li a {
+        padding: 0px 5px;
+        font-size: 0.9rem;
+    }
+}
+
 /*------------------------- User -------------------------*/
 .navbar-user {
     width: 50px;
     height: 50px;
     filter: invert(100%) brightness(200%);
+}
+
+@media (max-width: 768px) {
+    .navbar-user {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-user {
+        width: 30px;
+        height: 30px;
+    }
 }
