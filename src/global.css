@@ -46,6 +46,9 @@
     --slider-button-color: var(--chocolate-cosmos);
 }
 
+
+
+/* -------------- Scroll -------------- */
 .scroll-y {
     overflow-y: auto;
 }
@@ -65,4 +68,15 @@
 
 .scroll-y::-webkit-scrollbar-button {
     display: none;
+}
+
+/* -------------- Section -------------- */
+.section {
+    width: 80%;
+}
+
+@media (max-width: 768px) {
+    .section {
+        width: 100%;
+    }
 }

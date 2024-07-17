@@ -1,9 +1,10 @@
 .body-background {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     height: 100vh;
     width: 100vw;
-    background-color: var(--body-background-color);
-}
 
-.body-outlet {
-    width: 100%;
+    background-color: var(--body-background-color);
 }

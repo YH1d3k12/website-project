@@ -1,0 +1,136 @@
+.goldfall {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.goldfall-coin {
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 50px;
+}
+
+.goldfall-coin:nth-of-type(odd) {
+    width: 40px;
+    height: 40px;
+}
+
+.goldfall-coin:nth-of-type(1) {
+    animation: fall1 4s linear infinite;
+}
+
+.goldfall-coin:nth-of-type(2) {
+    animation: fall1 7s linear infinite;
+}
+
+.goldfall-coin:nth-of-type(3) {
+    animation: fall2 6s linear infinite;
+}
+
+.goldfall-coin:nth-of-type(4) {
+    animation: fall2 3.5s linear infinite;
+}
+
+.goldfall-coin:nth-of-type(5) {
+    animation: fall2 8s linear infinite;
+}
+
+.goldfall-coin:nth-of-type(6) {
+    animation: fall2 1.5s linear infinite;
+}
+
+.goldfall-coin:nth-of-type(7) {
+    animation: fall3 5s linear infinite;
+}
+
+.goldfall-coin:nth-of-type(8) {
+    animation: fall3 2s linear infinite;
+}
+
+.goldfall-coin:nth-of-type(9) {
+    animation: fall4 6s linear infinite;
+}
+
+.goldfall-coin:nth-of-type(10) {
+    animation: fall4 3.5s linear infinite;
+}
+
+.goldfall-coin:nth-of-type(11) {
+    animation: fall5 5s linear infinite;
+}
+
+.goldfall-coin:nth-of-type(12) {
+    animation: fall5 2s linear infinite;
+}
+
+@keyframes fall1 {
+    0% {
+        top: -100%;
+        left: -12.5%;
+        transform: rotateX(180deg);
+    }
+
+    100% {
+        top: 100%;
+        left: 31.25%;
+        transform: rotateX(-180deg);
+    }
+}
+
+@keyframes fall2 {
+    0% {
+        top: -100%;
+        left: 62.5%;
+        transform: rotateX(-90deg);
+    }
+
+    100% {
+        top: 100%;
+        left: 6.25%;
+        transform: translateX(50px) rotateX(180deg);
+    }
+}
+
+@keyframes fall3 {
+    0% {
+        top: -110%;
+        right: -10%;
+        transform: rotateX(-180deg);
+    }
+
+    100% {
+        top: 100%;
+        right: 20%;
+        transform: rotateX(180deg);
+    }
+}
+
+@keyframes fall4 {
+    0% {
+        top: -110%;
+        right: 0%;
+        transform: rotateY(-180deg);
+    }
+
+    100% {
+        top: 100%;
+        right: 70%;
+        transform: rotateY(180deg);
+    }
+}
+
+@keyframes fall5 {
+    0% {
+        top: -100%;
+        left: -12.5%;
+        transform: rotateY(180deg);
+    }
+
+    100% {
+        top: 100%;
+        left: 31.25%;
+        transform: rotateY(-180deg);
+    }
+}
