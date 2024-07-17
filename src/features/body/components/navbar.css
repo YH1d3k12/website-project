@@ -9,9 +9,10 @@
 .navbar-background {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
+    padding: 0px 3%;
     width: 80%;
     height: 100%;
 
@@ -33,12 +34,34 @@
 /*------------------------- Title -------------------------*/
 
 .navbar-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     font-size: 3.5rem;
     font-weight: 900;
-    background: linear-gradient(200deg, var(--gold-gradient));
-    -webkit-background-clip: text;
-    background-clip: text;
     color: transparent;
+    background: linear-gradient(130deg, var(--gold-gradient));
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: moveBackground 2.5s linear infinite;
+
+    background-size: 150% 100%;
+}
+
+.navbar-title-logo {
+    width: 120px;
+    height: 120px;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: -100% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
 }
 
 @media (max-width: 768px) {
