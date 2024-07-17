@@ -22,35 +22,41 @@
 }
 
 .slider-button {
-    padding: 25px 30px;
+    position: absolute;
+    width: 80px;
+    height: 80px;
     border: solid 5px var(--body-background-color);
 
     color: #fff;
-    background-color: var(--dark-purple);
+    background-color: var(--slider-button-color);
     cursor: pointer;
     z-index: 1;
 }
 
+.slider-button img {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%) brightness(200%);
+}
+
 .slider-button-left {
-    position: absolute;
     top: 40%;
     left: -40px;
     transform: rotate(45deg);
 }
 
-.slider-button-left h4 {
-    transform: rotate(316deg);
+.slider-button-left img {
+    transform: rotate(133deg) translateX(4px);
 }
 
 .slider-button-right {
-    position: absolute;
     top: 40%;
     right: -40px;
     transform: rotate(45deg);
 }
 
-.slider-button-right h4 {
-    transform: rotate(-40deg);
+.slider-button-right img {
+    transform: rotate(315deg) translateX(2px);
 }
 
 .slider-nav {
@@ -69,7 +75,7 @@
     width: 0.5rem;
     height: 0.5rem;
 
-    background-color: #fff;
+    background-color: var(--white);
     opacity: 0.75;
     transition: opacity ease 0.5s;
     cursor: pointer;

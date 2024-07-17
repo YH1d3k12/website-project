@@ -42,6 +42,8 @@
     --navbar-links-hover-color: var(--white);
     --navbar-links-hover-background-color: var(--chocolate-cosmos);
 
+    /* Slider */
+    --slider-button-color: var(--chocolate-cosmos);
 }
 
 .scroll-y {

@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+
+import arrow from "../../../assets/arrow.png";
 import './slider.css';
 
 export default function Slider() {
@@ -37,10 +39,10 @@ export default function Slider() {
     return (
         <div className="slider">
             <button className="slider-button slider-button-left" onClick={prevSlide}>
-                <h4>&lt;</h4>
+                <img src={arrow} />
             </button>
             <button className="slider-button slider-button-right" onClick={nextSlide}>
-                <h4>&gt;</h4>
+                <img src={arrow} />
             </button>
             <div className="slider-container">
                 {slides.map((slide, index) => (
