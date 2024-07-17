@@ -9,7 +9,9 @@ export default function Body() {
     return (
         <div className="body-background">
             <Navbar />
-            <Outlet />
+            <div className="body-outlet">
+                <Outlet />
+            </div>
         </div>
     );
 };
