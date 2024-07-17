@@ -13,27 +13,34 @@
 
 :root {
     /* Colors */
+    --burgundy: #8b0c26;
+    --black-bean: #391717;
+    --chocolate-cosmos-light: #4f131b;
+    --chocolate-cosmos: #3f0713;
     --dark-purple: #0b011a;
-    --veil: #00000040;
-    --onyx: #33363F;
     --eerie-black: #151716;
+    --onyx: #33363F;
+    --veil: #00000040;
     --vermilion: #e14533;
+    --wine: #732731;
     --white: #FFFFFF;
+
+    /* Gradientes */
+    --gold-gradient: #ffc373, #ffffff 16%, #ffc373 21%, #ffffff 24%, #a17434 27%, #ffc373 36%, #ffffff 45%, #ffffff 60%, #ffc373 72%, #ffffff 80%, #ffc373 84%, #a17434;
 
     /* Scroll */
     --scroll-scrollbar-thumb: var(--eerie-black);
     --scroll-scrollbar-track: var(--white);
 
     /* Body */
-    --body-background-color: var(--onyx);
+    --body-background-color: var(--wine);
 
     /* Navbar */
-    --navbar-background-color: var(--dark-purple);
+    --navbar-background-color: var(--chocolate-cosmos-light);
     --navbar-title-color: var(--white);
-    --navbar-title-span-color: var(--vermilion);
     --navbar-links-color: var(--white);
     --navbar-links-hover-color: var(--white);
-    --navbar-links-hover-background-color: var(--vermilion);
+    --navbar-links-hover-background-color: var(--chocolate-cosmos);
 
 }
 

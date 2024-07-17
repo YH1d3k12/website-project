@@ -8,9 +8,8 @@ export default function Navbar() {
     return (
         <nav className="navbar">
             <div className="navbar-background">
-                <h2 className="navbar-title">Web<span>site</span></h2>
+                <Link to={"/"} className="navbar-title">Capivara</Link>
                 <ul className="navbar-links">
-                    <li><Link to={"/"}>Home</Link></li>
                     <li><Link to={"/games"}>Games</Link></li>
                     <li><Link to={"/about"}>About</Link></li>
                 </ul>

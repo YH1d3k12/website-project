@@ -3,7 +3,7 @@
     justify-content: center;
 
     width: 100%;
-    height: 75px;
+    height: 120px;
 }
 
 .navbar-background {
@@ -21,7 +21,7 @@
 
 @media (max-width: 768px) {
     .navbar {
-        height: 60px;
+        height: 90px;
     }
 
     .navbar-background {
@@ -33,12 +33,12 @@
 /*------------------------- Title -------------------------*/
 
 .navbar-title {
-    font-size: 2.5rem;
-    color: var(--navbar-title-color);
-}
-
-.navbar-title span {
-    color: var(--navbar-title-span-color);
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(200deg, var(--gold-gradient));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 @media (max-width: 768px) {
