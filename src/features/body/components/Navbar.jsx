@@ -15,7 +15,7 @@ export default function Navbar() {
                     <li><Link to={"/about"}>About</Link></li>
                     <li><Link to={"/outro"}>Other</Link></li>
                 </ul>
-                <img className="navbar-user" src={user} alt="user" />
+                {/* <img className="navbar-user" src={user} alt="user" /> */}
             </div>
         </nav>
     );
