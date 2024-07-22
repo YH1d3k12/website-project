@@ -4,8 +4,8 @@
     justify-self: center;
     align-items: center;
 
-    height: 100%;
     width: 100%;
+    min-height: max(360px, 100%);
 }
 
 .home-section {

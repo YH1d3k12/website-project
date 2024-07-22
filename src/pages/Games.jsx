@@ -5,7 +5,7 @@ import '../features/games/games.css';
 
 export default function Games() {
     return (
-        <div className="games section">
+        <div className="games section scroll-y">
             <div className="games-goldfall">
                 <GoldFall />
             </div>
