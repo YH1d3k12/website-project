@@ -1,0 +1,115 @@
+.under-construction {
+    position: relative;
+
+    width: 280px;
+    height: 280px;
+}
+
+@media (max-width: 480px) {
+    .under-construction {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+/*------------------------- Text -------------------------*/
+
+.under-construction-title {
+    width: 100%;
+    color: var(--white);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.under-construction-subtitle{
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+
+    width: 100%;
+    color: var(--white);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .under-construction-title {
+        font-size: 1.2rem;
+    }
+    
+    .under-construction-subtitle{
+        font-size: 0.9rem;
+    }
+    
+}
+
+/*------------------------- Gears -------------------------*/
+
+.under-construction-gear {
+    filter: invert(100%) brightness(200%);
+}
+
+.under-construction-gear:nth-of-type(1) {
+    position: absolute;
+    top: 45%;
+    left: 25%;
+
+    width: 120px;
+    height: 120px;
+    animation: rotateRight 3s linear infinite;
+}
+
+.under-construction-gear:nth-of-type(2) {
+    position: absolute;
+    top: 19%;
+    left: 18%;
+
+    width: 80px;
+    height: 80px;
+    animation: rotateRight 3s linear infinite;
+}
+
+.under-construction-gear:nth-of-type(3) {
+    position: absolute;
+    top: 40%;
+    right: 15%;
+    
+    width: 60px;
+    height: 60px;
+    animation: rotateLeft 3s linear infinite;
+}
+
+@media (max-width: 480px) {
+    .under-construction-gear:nth-of-type(1) {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .under-construction-gear:nth-of-type(2) {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .under-construction-gear:nth-of-type(3) {       
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@keyframes rotateRight {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateLeft {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}

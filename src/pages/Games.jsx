@@ -1,4 +1,5 @@
 import GoldFall from '../components/GoldFall';
+import UnderConstruction from '../components/UnderConstruction';
 import '../features/games/games.css';
 
 
@@ -9,7 +10,7 @@ export default function Games() {
                 <GoldFall />
             </div>
             <div className="games-section">
-                <h1>Lista de Jogos</h1>
+                <UnderConstruction />
             </div>
             <div className="games-goldfall">
                 <GoldFall />
