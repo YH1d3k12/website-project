@@ -4,12 +4,12 @@
     justify-self: center;
     align-items: center;
 
-    padding: 40px 0px;
     height: 100%;
     width: 100%;
 }
 
 .home-section {
+    padding: 40px 0px;
     width: 100%;
     height: 100%;
 }
@@ -19,7 +19,19 @@
     height: 100%;
 }
 
+@media (max-width: 1280px) {
+    .home-goldfall {
+        width: 240px;
+    }
+}
+
 @media (max-width: 1024px) {
+    .home-goldfall {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
     .home-goldfall {
         display: none;
     }

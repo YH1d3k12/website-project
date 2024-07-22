@@ -64,6 +64,7 @@ export default function Slider() {
                     />
                 ))}
             </div>
+            <button className="slider-play-button">Jogar</button>
         </div>
     );
 };

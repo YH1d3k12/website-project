@@ -21,6 +21,26 @@
     transition: opacity 1.5s ease-in-out;
 }
 
+@media (max-width: 1280px) {
+    .slider {
+        width: 640px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .slider {
+        width: 480px;
+    }
+}
+
+@media (max-width: 640px) {
+    .slider {
+        width: 90%;
+    }
+}
+
+
+/*------------------------- Buttons -------------------------*/
 .slider-button {
     position: absolute;
     width: 80px;
@@ -41,7 +61,7 @@
 
 .slider-button-left {
     top: 40%;
-    left: -40px;
+    left: -5.15%;
     transform: rotate(45deg);
 }
 
@@ -51,7 +71,7 @@
 
 .slider-button-right {
     top: 40%;
-    right: -40px;
+    right: -5.15%;
     transform: rotate(45deg);
 }
 
@@ -59,6 +79,89 @@
     transform: rotate(315deg) translateX(2px);
 }
 
+@media (max-width: 1280px) {
+    .slider-button {
+        width: 60px;
+        height: 60px;
+    }
+
+    .slider-button img {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .slider-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .slider-button img {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (max-width: 640px) {
+    .slider-button {
+        display: none;
+    }
+}
+
+/*------------------------- Slider Play Button -------------------------*/
+.slider-play-button {
+    position: absolute;
+    left: 25px;
+    bottom: 10px;
+
+    border-radius: 8px;
+    width: 140px;
+    height: 40px;
+
+    color: #fff;
+    background-color: rgb(221, 40, 40);
+
+    font-weight: 500;
+    font-size: 1rem;
+
+    cursor: pointer;
+    z-index: 2;
+}
+
+@media (max-width: 1280px) {
+    .slider-play-button {
+        width: 120px;
+        height: 30px;
+
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .slider-play-button {
+        left: 15px;
+        bottom: 5px;
+
+        width: 100px;
+        height: 30px;
+
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .slider-play-button {
+        left: 10px;
+        width: 70px;
+        height: 20px;
+
+        font-size: 0.7rem;
+    }
+}
+
+
+/*------------------------- Slider Location -------------------------*/
 .slider-nav {
     display: flex;
     position: absolute;
@@ -72,8 +175,8 @@
 
 .slider-nav a {
     border-radius: 50%;
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 8px;
+    height: 8px;
 
     background-color: var(--white);
     opacity: 0.75;
@@ -83,4 +186,11 @@
 
 .slider-nav a.active {
     opacity: 1 !important;
+}
+
+@media (max-width: 640px) {
+    .slider-nav a {
+        width: 4px;
+        height: 4px;
+    }
 }
