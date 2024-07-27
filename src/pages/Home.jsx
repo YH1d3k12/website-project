@@ -1,5 +1,6 @@
-import Slider from '../features/home/components/Slider';
-import GoldFall from '../components/GoldFall';
+import GoldFall from '../components/GoldFall.jsx';
+import Slider from '../features/home/components/Slider.jsx';
+import ScoreBoard from '../features/home/components/ScoreBoard.jsx';
 import '../features/home/home.css';
 
 
@@ -11,6 +12,7 @@ export default function Home() {
             </div>
             <div className="home-section">
                 <Slider />
+                <ScoreBoard />
             </div>
             <div className="home-goldfall">
                 <GoldFall />

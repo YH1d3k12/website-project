@@ -1,0 +1,147 @@
+.score-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 15px 0px;
+    width: 100%;
+}
+
+.score-board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 25px;
+    border-radius: 8px;
+    width: min(768px, 100%);
+    background-color: rgba(0, 0, 0, 0.22);
+}
+
+/*------------------------- FIRST PLACE -------------------------*/
+.score-board-first-place {
+    text-align: center;
+}
+
+.score-board-first-place h2 {
+    color: var(--white);
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.score-board-first-place p {
+    font-size: 2.5rem;
+    font-weight: 900;
+
+    color: transparent;
+    background: linear-gradient(130deg, var(--gold-gradient));
+    background-size: 150% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: moveBackground 2.5s linear infinite;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: -100% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .score-board-first-place h2 {
+        font-size: 1.3rem;
+    }
+    
+    .score-board-first-place p {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .score-board-first-place h2 {
+        font-size: 1rem;
+    }
+    
+    .score-board-first-place p {
+        font-size: 1.5rem;
+    }
+}
+
+/*------------------------- Table Container -------------------------*/
+.score-board-tables {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+@media (max-width: 1024px) {
+    .score-board-tables {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/*------------------------- Table Container -------------------------*/
+.score-board-montly-best,
+.score-board-weekly-best {
+    color: var(--white);
+    text-align: center;
+}
+
+.score-board-montly-best h3,
+.score-board-weekly-best h3 {
+    padding: 4px 8px;
+    font-size: 1.3rem;
+}
+
+.score-board-montly-best th,
+.score-board-montly-best td,
+.score-board-weekly-best th,
+.score-board-weekly-best td {
+    padding: 4px 20px;
+    border: solid 1px var(--white);
+    border-radius: 4px;
+}
+
+.score-board-montly-best tr:nth-of-type(1) td:nth-of-type(2),
+.score-board-weekly-best tr:nth-of-type(1)  td:nth-of-type(2) {
+    font-size: 1.4rem;
+    font-weight: 900;
+
+    color: transparent;
+    background: linear-gradient(130deg, var(--gold-gradient));
+    background-size: 150% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: moveBackground 2.5s linear infinite;
+}
+
+.score-board-montly-best tr:nth-of-type(2) td:nth-of-type(2),
+.score-board-weekly-best tr:nth-of-type(2)  td:nth-of-type(2) {
+    font-size: 1.2rem;
+    font-weight: 900;
+
+    color: transparent;
+    background: linear-gradient(130deg, var(--silver-gradient));
+    background-size: 150% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: moveBackground 2.5s linear infinite;
+}
+
+.score-board-montly-best tr:nth-of-type(3) td:nth-of-type(2),
+.score-board-weekly-best tr:nth-of-type(3)  td:nth-of-type(2) {
+    font-size: 1.1rem;
+    font-weight: 900;
+
+    color: transparent;
+    background: linear-gradient(130deg, var(--bronze-gradient));
+    background-size: 150% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: moveBackground 2.5s linear infinite;
+}

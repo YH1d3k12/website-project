@@ -27,6 +27,8 @@
 
     /* Gradientes */
     --gold-gradient: #ffc373, #ffffff 16%, #ffc373 21%, #ffffff 24%, #a17434 27%, #ffc373 36%, #ffffff 45%, #ffffff 60%, #ffc373 72%, #ffffff 80%, #ffc373 84%, #a17434;
+    --silver-gradient: #c5c4c4, #ffffff 10%, #e0e0e0 20%, #ffffff 30%, #a4a4a4 40%, #e0e0e0 50%, #ffffff 60%, #e0e0e0 70%, #ffffff 80%, #e0e0e0 90%, #b0b0b0;
+    --bronze-gradient: #cd7f32, #f4a460 10%, #cd7f32 20%, #f4a460 30%, #8c4d3a 40%, #cd7f32 50%, #f4a460 60%, #cd7f32 70%, #f4a460 80%, #cd7f32 90%, #8c4d3a;
 
     /* Scroll */
     --scroll-scrollbar-thumb: var(--eerie-black);
