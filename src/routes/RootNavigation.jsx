@@ -6,7 +6,7 @@ import Games from '../pages/Games.jsx';
 
 export default function RootNavigation() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={"/website-project/"}>
             <Routes>
                 <Route path="/" element={<Body />} >
                     <Route path="/" element={<Home />} />
