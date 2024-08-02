@@ -1,9 +1,9 @@
-.games {
+.other {
     display: flex;
     flex-direction: row;
 }
 
-.games-section {
+.other-section {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,13 +12,13 @@
     height: 100%;
 }
 
-.games-goldfall {
+.other-goldfall {
     width: 280px;
     height: 100%;
 }
 
 @media (max-width: 1024px) {
-    .games-goldfall {
+    .other-goldfall {
         display: none;
     }
 }

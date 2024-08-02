@@ -13,7 +13,7 @@ export default function Navbar() {
                 <ul className="navbar-links">
                     <li><Link to={"/games"}>Games</Link></li>
                     <li><Link to={"/games"}>About</Link></li>
-                    <li><Link to={"/games"}>Other</Link></li>
+                    <li><Link to={"/other"}>Other</Link></li>
                 </ul>
                 {/* <img className="navbar-user" src={user} alt="user" /> */}
             </div>
