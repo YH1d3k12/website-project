@@ -10,7 +10,7 @@ export default function Home() {
             <div className="home-goldfall">
                 <GoldFall />
             </div>
-            <div className="home-section">
+            <div className="home-section scroll-y">
                 <Slider />
                 <ScoreBoard />
             </div>
