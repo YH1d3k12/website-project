@@ -1,0 +1,30 @@
+.slot-machine {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 420px;
+    height: 420px;
+    border: solid 1px black;
+}
+
+.slots {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 10px;
+    width: 276.5px;
+    height: 257px;
+    border: solid 1px black;
+}
+
+.reels {
+    width: 79px;
+    height: 100%;
+    border: solid 1px black;
+
+    background-image: url(https://assets.codepen.io/439000/slotreel.webp);
+    background-repeat: repeat-y;
+    background-position: 0 0;
+}
