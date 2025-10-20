@@ -1,15 +1,16 @@
-import GoldFall from '../../components/GoldFall/index.tsx';
-import UnderConstruction from '../../components/UnderConstruction/index.tsx';
+import GoldFall from '../../components/GoldFall.tsx';
+import RouletteWheel from '../../components/RouletteWheel/index.tsx';
 import './styles.css';
 
-export default function Games() {
+
+export default function Games(): JSX.Element {
     return (
         <div className="games section scroll-y">
             <div className="games-goldfall">
                 <GoldFall />
             </div>
             <div className="games-section">
-                <UnderConstruction />
+                <RouletteWheel />
             </div>
             <div className="games-goldfall">
                 <GoldFall />
