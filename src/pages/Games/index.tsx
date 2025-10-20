@@ -1,4 +1,4 @@
-import GoldFall from '../../components/GoldFall.tsx';
+import GoldFall from '../../components/GoldFall';
 import RouletteWheel from '../../components/RouletteWheel/index.tsx';
 import './styles.css';
 

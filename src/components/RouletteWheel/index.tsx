@@ -103,6 +103,7 @@ const RouletteWheel: React.FC = () => {
     }
 
     let currentBet = betAmount;
+    
     if (betType === 'proportional') {
       currentBet = playerBalance * (betAmount / 100);
     }
