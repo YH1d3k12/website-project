@@ -1,7 +1,18 @@
-export default function WeeklyBestTable({ data }) {
+import './styles.css'
+
+interface Entry {
+    rank: number;
+    score: string;
+}
+
+interface MonthlyBestTableProps {
+    data: Entry[];
+}
+
+export default function MonthlyBestTable({ data }: MonthlyBestTableProps) {
     return (
-        <div className="score-board-weekly-best">
-            <h3>Melhores da Semana</h3>
+        <div className="score-board-montly-best">
+            <h3>Melhores do Mês</h3>
             <table>
                 <thead>
                     <tr>

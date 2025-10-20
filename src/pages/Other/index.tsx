@@ -1,7 +1,6 @@
-import GoldFall from '../components/GoldFall';
-import SlotMachine from '../features/other/components/SlotMachine.jsx';
-import '../features/other/other.css';
-
+import GoldFall from '../../components/GoldFall/index.tsx';
+import SlotMachine from '../../components/SlotMachine/index.tsx';
+import './styles.css';
 
 export default function Other() {
     return (

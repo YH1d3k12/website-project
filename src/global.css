@@ -10,7 +10,6 @@
     list-style: none;
 }
 
-
 :root {
     /* Colors */
     --burgundy: #8b0c26;
@@ -47,8 +46,6 @@
     /* Slider */
     --slider-button-color: var(--chocolate-cosmos);
 }
-
-
 
 /* -------------- Scroll -------------- */
 .scroll-y {

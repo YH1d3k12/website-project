@@ -1,9 +1,6 @@
 import { Outlet } from 'react-router-dom';
-
-import Navbar from '../features/body/components/Navbar.jsx';
-
-import '../features/body/body.css';
-
+import Navbar from '../Navbar/index.tsx';
+import './styles.css';
 
 export default function Body() {
     return (

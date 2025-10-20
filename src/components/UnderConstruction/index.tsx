@@ -1,6 +1,5 @@
-import gear from '../assets/gear.png';
-import './underConstruction.css';
-
+import gear from '../../assets/gear.png';
+import './styles.css';
 
 export default function UnderConstruction() {
     return (

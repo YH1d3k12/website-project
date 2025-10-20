@@ -1,7 +1,6 @@
-import GoldFall from '../components/GoldFall';
-import UnderConstruction from '../components/UnderConstruction';
-import '../features/games/games.css';
-
+import GoldFall from '../../components/GoldFall/index.tsx';
+import UnderConstruction from '../../components/UnderConstruction/index.tsx';
+import './styles.css';
 
 export default function Games() {
     return (

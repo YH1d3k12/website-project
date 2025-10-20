@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-import arrow from "../../../assets/arrow.png";
-import './slider.css';
+import arrow from "../../assets/arrow.png";
+import './styles.css';
+
+interface Slide {
+    id: string;
+    src: string;
+}
 
 export default function Slider() {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const slides = [
+    const [currentSlide, setCurrentSlide] = useState<number>(0);
+    const slides: Slide[] = [
         {
             id: "slide-1",
             src: "https://images.unsplash.com/photo-1517232115160-ff93364542dd?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -20,11 +25,11 @@ export default function Slider() {
         }
     ];
 
-    const nextSlide = () => {
+    const nextSlide = (): void => {
         setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
     };
 
-    const prevSlide = () => {
+    const prevSlide = (): void => {
         setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
     };
 

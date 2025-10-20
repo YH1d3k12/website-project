@@ -1,10 +1,14 @@
-import MonthlyBestTable from "./MontlyBestTable";
-import WeeklyBestTable from "./WeeklyBestTable";
-import "./scoreBoard.css";
+import MonthlyBestTable from "../MontlyBestTable/index.tsx";
+import WeeklyBestTable from "../WeeklyBestTable/index.tsx";
+import "./styles.css";
+
+interface Entry {
+    rank: number;
+    score: string;
+}
 
 export default function ScoreBoard() {
-    // Dados de exemplo
-    const monthlyBest = [
+    const monthlyBest: Entry[] = [
         { rank: 1, score: "R$ 5.000.000,00" },
         { rank: 2, score: "R$ 3.000.000,00" },
         { rank: 3, score: "R$ 2.000.000,00" },
@@ -12,7 +16,7 @@ export default function ScoreBoard() {
         { rank: 5, score: "R$ 500.000,00" }
     ];
 
-    const weeklyBest = [
+    const weeklyBest: Entry[] = [
         { rank: 1, score: "R$ 500.000,00" },
         { rank: 2, score: "R$ 300.000,00" },
         { rank: 3, score: "R$ 200.000,00" },

@@ -1,5 +1,4 @@
-import "./slotMachine.css";
-
+import "./styles.css";
 
 export default function SlotMachine() {
     return (

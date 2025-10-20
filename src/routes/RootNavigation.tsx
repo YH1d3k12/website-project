@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Body from '../pages/Body.jsx';
-import Home from '../pages/Home.jsx';
-import Games from '../pages/Games.jsx';
-import Other from '../pages/Other.jsx';
+import Body from '../components/Layout/index.tsx';
+import Home from '../pages/Home/index.tsx';
+import Games from '../pages/Games/index.tsx';
+import Other from '../pages/Other/index.tsx';
 
 export default function RootNavigation() {
     return (

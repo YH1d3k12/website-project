@@ -1,8 +1,7 @@
-import GoldFall from '../components/GoldFall.jsx';
-import Slider from '../features/home/components/Slider.jsx';
-import ScoreBoard from '../features/home/components/ScoreBoard.jsx';
-import '../features/home/home.css';
-
+import GoldFall from '../../components/GoldFall/index.tsx';
+import Slider from '../../components/Slider/index.tsx';
+import ScoreBoard from '../../components/ScoreBoard/index.tsx';
+import './styles.css';
 
 export default function Home() {
     return (
