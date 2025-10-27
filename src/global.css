@@ -33,9 +33,6 @@
     --scroll-scrollbar-thumb: var(--eerie-black);
     --scroll-scrollbar-track: var(--white);
 
-    /* Body */
-    --body-background-color: var(--wine);
-
     /* Navbar */
     --navbar-background-color: var(--chocolate-cosmos-light);
     --navbar-title-color: var(--white);

@@ -1,11 +1,11 @@
-.body-background {
+.layout {
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    min-height: 100vh;
+    background-color: var(--wine);
+}
 
-    height: 100vh;
-    width: 100vw;
-
-    background-color: var(--body-background-color);
-    overflow-y: hidden;
+.main {
+    min-height: calc(100vh - 160px);
 }
