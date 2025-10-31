@@ -5,6 +5,7 @@
     padding: 0;
     border: 0;
     margin: 0;
+    font-size: 62.5%;
     font-family: "Open Sans", sans-serif;
     text-decoration: none;
     list-style: none;
@@ -44,6 +45,16 @@
     --slider-button-color: var(--chocolate-cosmos);
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
 /* -------------- Scroll -------------- */
 .scroll-y {
     overflow-y: auto;
@@ -64,23 +75,4 @@
 
 .scroll-y::-webkit-scrollbar-button {
     display: none;
-}
-
-/* -------------- Section -------------- */
-.section {
-    height: calc(100vh - 120px);
-    width: 80%;
-}
-
-@media (max-width: 1280px) {
-    .section {
-        height: calc(100vh - 100px);
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .section {
-        height: calc(100vh - 80px);
-    }
 }

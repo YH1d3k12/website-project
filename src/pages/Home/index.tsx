@@ -5,11 +5,11 @@ import './styles.css';
 
 export default function Home() {
     return (
-        <div className="home section">
+        <div className="home">
             <div className="home-goldfall">
                 <GoldFall />
             </div>
-            <div className="home-section scroll-y">
+            <div className="home-section">
                 <Slider />
                 <ScoreBoard />
             </div>
@@ -18,4 +18,4 @@ export default function Home() {
             </div>
         </div>
     );
-};
+}

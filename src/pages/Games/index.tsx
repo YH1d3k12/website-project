@@ -2,10 +2,9 @@ import GoldFall from '../../components/GoldFall';
 import RouletteWheel from '../../components/RouletteWheel/index.tsx';
 import './styles.css';
 
-
 export default function Games(): JSX.Element {
     return (
-        <div className="games section scroll-y">
+        <div className="games">
             <div className="games-goldfall">
                 <GoldFall />
             </div>
@@ -17,4 +16,4 @@ export default function Games(): JSX.Element {
             </div>
         </div>
     );
-};
+}
