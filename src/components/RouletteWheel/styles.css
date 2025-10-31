@@ -1,180 +1,312 @@
-.roulette-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  padding: 20px;
-  align-items: start;
+/* --- Variáveis e Reset Básico --- */
+:root {
+  --color-dark-bg: #1a1a2e;
+  /* Fundo principal escuro */
+  --color-panel-bg: #2c2c54;
+  /* Fundo dos painéis e áreas de conteúdo */
+  --color-element-bg: #3e3e70;
+  /* Fundo de inputs/selects/controles */
+  --color-border: #4a4e69;
+  /* Bordas e divisores */
+  --color-highlight: #a4e6ff;
+  /* Destaque principal (títulos) */
+  --color-action: #00bcd4;
+  /* Cor primária do botão */
+  --color-red: #f44336;
+  /* Cor da Roleta/Alerta Vermelho */
+  --color-black: #212121;
+  /* Cor da Roleta Preto */
+  --color-green: #4caf50;
+  /* Cor da Roleta/Sucesso Verde */
 }
 
-@media (max-width: 1024px) {
-  .roulette-container {
-    grid-template-columns: 1fr;
-  }
+/* 1. Ajuste de Fonte Base para 1rem = 10px */
+html {
+  /* Define o tamanho base para facilitar 1rem = 10px */
+  font-size: 62.5%;
+  /* 10px / 16px (default) = 62.5% */
 }
 
-.bet-controls,
-.balance-info,
-.main-content,
-.chart-container,
-.game-history {
-  background: var(--card);
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: var(--shadow);
-  border: 1px solid #e5e7eb;
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-dark-bg);
+  color: #e4e4e4;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-size: 1.6rem;
+  /* Tamanho do corpo 16px */
 }
 
-.main-content {
+.roulette-game {
+  max-width: 120rem;
+  /* 1200px */
+  margin: 3rem auto;
+  /* 30px */
+  padding: 2rem;
+  /* 20px */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
+  gap: 3rem;
+  /* 30px */
+  background-color: var(--color-panel-bg);
+  border-radius: 1.2rem;
+  /* 12px */
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+  /* 10px 30px */
 }
 
+.roulette-game h2 {
+  font-size: 3.2rem;
+  /* 32px */
+  text-align: center;
+  color: var(--color-highlight);
+  border-bottom: 0.2rem solid var(--color-border);
+  /* 2px */
+  padding-bottom: 1rem;
+  /* 10px */
+}
+
+/* --- Informações de Saldo e Game Over --- */
+.game-info {
+  display: flex;
+  justify-content: space-around;
+  padding: 1.5rem;
+  /* 15px */
+  border: 0.1rem solid var(--color-border);
+  /* 1px */
+  border-radius: 0.8rem;
+  /* 8px */
+  background-color: var(--color-element-bg);
+  margin-bottom: 2rem;
+  /* 20px */
+  font-size: 1.8rem;
+  /* 18px */
+  font-weight: bold;
+}
+
+.game-info p:first-child {
+  color: var(--color-green);
+}
+
+.game-info p:last-child {
+  color: var(--color-red);
+}
+
+.game-over-message {
+  text-align: center;
+  padding: 3rem;
+  /* 30px */
+  background-color: var(--color-red);
+  color: white;
+  border-radius: 1rem;
+  /* 10px */
+  margin: 2rem 0;
+  /* 20px */
+}
+
+.game-over-message h3 {
+  font-size: 2.4rem;
+  /* 24px */
+  margin-top: 0;
+}
+
+/* --- Controles de Aposta --- */
+.betting-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  /* 200px */
+  gap: 2rem;
+  /* 20px */
+  padding: 2rem;
+  /* 20px */
+  background-color: var(--color-element-bg);
+  border-radius: 0.8rem;
+  /* 8px */
+}
+
+.betting-controls>div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  /* 5px */
+  font-weight: 600;
+  font-size: 1.4rem;
+  /* 14px */
+}
+
+input[type="number"],
+select {
+  padding: 1rem;
+  /* 10px */
+  border-radius: 0.6rem;
+  /* 6px */
+  border: 0.1rem solid var(--color-border);
+  /* 1px */
+  background-color: var(--color-dark-bg);
+  color: #e4e4e4;
+  transition: border-color 0.2s;
+  font-size: 1.6rem;
+  /* 16px */
+}
+
+input[type="number"]:focus,
+select:focus {
+  border-color: var(--color-action);
+  outline: none;
+}
+
+button {
+  padding: 1.2rem;
+  /* 12px */
+  border: none;
+  border-radius: 0.6rem;
+  /* 6px */
+  background-color: var(--color-action);
+  color: var(--color-dark-bg);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+  font-size: 1.6rem;
+  /* 16px */
+}
+
+button:hover:not(:disabled) {
+  background-color: #00e4ff;
+}
+
+button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* --- Resultado do Giro --- */
+.result {
+  text-align: center;
+  padding: 1.5rem;
+  /* 15px */
+  margin: 2rem 0;
+  /* 20px */
+  border-radius: 0.8rem;
+  /* 8px */
+  background-color: var(--color-element-bg);
+  border: 0.1rem solid var(--color-border);
+  /* 1px */
+}
+
+.result h3 {
+  margin: 0;
+  font-size: 2rem;
+  /* 20px */
+}
+
+.result span {
+  font-weight: bold;
+  font-size: 1.8rem;
+  /* 18px */
+}
+
+/* --- Configurações do Jogo (Game Settings) --- */
+.game-settings {
+  padding: 2rem;
+  /* 20px */
+  background-color: var(--color-element-bg);
+  border-radius: 0.8rem;
+  /* 8px */
+  border: 0.1rem solid var(--color-border);
+  /* 1px */
+  margin-top: 2rem;
+  /* 20px */
+}
+
+.game-settings h4 {
+  font-size: 1.8rem;
+  /* 18px */
+  color: var(--color-highlight);
+  margin-top: 0;
+  border-bottom: 0.1rem dashed var(--color-border);
+  /* 1px */
+  padding-bottom: 0.5rem;
+  /* 5px */
+}
+
+.game-settings>div {
+  margin-bottom: 1rem;
+  /* 10px */
+}
+
+/* --- Gráfico (Chart) --- */
 .chart-container {
   width: 100%;
-  min-height: 260px;
-  max-height: 340px;
+  height: 40rem;
+  /* 400px - Altura fixa para o gráfico */
+  margin: 3rem 0;
+  /* 30px */
+  padding: 2rem;
+  /* 20px */
+  background-color: var(--color-element-bg);
+  border-radius: 1.2rem;
+  /* 12px */
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3);
+  /* 4px 10px */
 }
 
-.wheel {
-  width: 320px;
-  height: 320px;
-  border: 6px solid var(--onyx);
-  border-radius: 50%;
-  position: relative;
-  overflow: hidden;
-  background: radial-gradient(circle at 40% 40%, rgba(255,255,255,.6), rgba(255,255,255,.1) 40%), #1b1b1b;
-  box-shadow: inset 0 0 20px rgba(0,0,0,.3);
-  margin: 8px 0;
+/* --- Histórico de Rodadas --- */
+.history-log {
+  margin-top: 3rem;
+  /* 30px */
+  padding: 2rem;
+  /* 20px */
+  background-color: var(--color-element-bg);
+  border-radius: 1.2rem;
+  /* 12px */
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3);
+  /* 4px 10px */
+  overflow-x: auto;
+  /* Garante scroll em telas pequenas */
 }
 
-.wheel-segment {
-  position: absolute;
+.history-log h3 {
+  color: var(--color-highlight);
+  margin-top: 0;
+  font-size: 2.2rem;
+  /* 22px */
+}
+
+table {
   width: 100%;
-  height: 100%;
-  clip-path: polygon(50% 50%, 100% 45%, 100% 55%);
-  transform-origin: 50% 50%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-weight: bold;
-  text-shadow: 0 2px 6px rgba(0,0,0,.4);
-}
-
-.wheel-number {
-  transform: rotate(-90deg);
-  transform-origin: center;
-  font-size: 14px;
-}
-
-.wheel.spinning {
-  animation: spin-realistic 3s cubic-bezier(.33,1,.68,1) forwards;
-}
-
-@keyframes spin-realistic {
-  0% { transform: rotate(0deg); }
-  70% { transform: rotate(3400deg); }
-  100% { transform: rotate(3600deg); }
-}
-
-.indicator {
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-bottom: 22px solid #000;
-  margin: 0 auto;
-  position: relative;
-  z-index: 5;
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 20px;
-  border-radius: 8px;
-  border: 0;
-  cursor: pointer;
-  font-weight: 600;
-  color: #fff;
-  background: var(--burgundy);
-  transition: transform .08s ease, background .2s ease;
-  box-shadow: 0 6px 14px rgba(139,12,38,.4);
-}
-.btn:hover { background: #9a0d2b; }
-.btn:active { transform: translateY(1px) scale(0.99); }
-
-.btn-secondary {
-  background: #374151;
-}
-.btn-secondary:hover { background: #1f2937; }
-
-.input, .select {
-  padding: 10px 12px;
-  border-radius: 6px;
-  border: 1px solid #e5e7eb;
-  background: #fff;
-  width: 100%;
-  font-size: 14px;
-}
-
-.label {
-  font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 6px;
-  display: block;
-}
-
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-@media (max-width: 640px) {
-  .grid-2 { grid-template-columns: 1fr; }
-}
-
-.section-title {
-  font-size: 18px;
-  margin: 6px 0 12px;
-  color: var(--text);
-}
-
-.educational-message {
-  background: #fff8f2;
-  border-left: 4px solid var(--vermilion);
-  padding: 10px 12px;
-  border-radius: 6px;
-  margin: 8px 0;
-  color: #6b4a1d;
-}
-
-.balance-info h3 {
-  margin: 8px 0;
-}
-
-.table {
-  width: 100%;
+  min-width: 80rem;
+  /* 800px - Garante que a tabela não fique espremida */
   border-collapse: collapse;
+  font-size: 1.4rem;
+  /* 14px */
 }
-.table th, .table td {
-  border-bottom: 1px solid #e5e7eb;
-  padding: 6px 8px;
-  text-align: left;
-  font-size: 13px;
-}
-.table th {
-  color: #374151;
-  font-weight: 600;
-  background: #f8fafc;
-}
-.table tbody tr:hover td { background: #f1f5f9; }
 
-@media (max-width: 900px) {
-  .chart-container { order: 3; }
-  .balance-info { order: 2; }
-  .bet-controls { order: 1; }
+th,
+td {
+  padding: 1.2rem 1rem;
+  /* 12px 10px */
+  text-align: left;
+  border-bottom: 0.1rem solid var(--color-border);
+  /* 1px */
+}
+
+th {
+  background-color: var(--color-dark-bg);
+  color: white;
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #353564;
+}
+
+tbody tr:hover {
+  background-color: #4a4e69;
 }
