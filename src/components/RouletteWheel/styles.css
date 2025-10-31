@@ -310,3 +310,245 @@ tbody tr:nth-child(even) {
 tbody tr:hover {
   background-color: #4a4e69;
 }
+
+/* 1. VARIÁVEIS DE COR E SETUP BÁSICO */
+:root {
+  --color-dark-bg: #1a1a2e;
+  --color-highlight: #a4e6ff;
+  --color-red: #f44336;
+  --color-black: #212121;
+  --color-green: #4caf50;
+  --roulette-size: 45rem;
+  /* 450px de diâmetro */
+  --segment-angle: 9.729deg;
+  /* 360 / 37 */
+  --segment-skew: 80.271deg;
+  /* 90 - 9.729 = 80.271 deg (o complemento) */
+  --half-size: 22.5rem;
+}
+
+/* Base de 1rem = 10px */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--color-dark-bg);
+  font-family: 'Inter', sans-serif;
+  color: #e4e4e4;
+  line-height: 1.6;
+  font-size: 1.6rem;
+}
+
+/* --- ESTILOS DO JOGO (Foram mantidos no início para consistência) --- */
+
+.roulette-game {
+  max-width: 120rem;
+  margin: 3rem auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  background-color: #2c2c54;
+  /* Usando cor fixa para painéis */
+  border-radius: 1.2rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+}
+
+.roulette-game h2 {
+  font-size: 3.2rem;
+  text-align: center;
+  color: var(--color-highlight);
+  border-bottom: 0.2rem solid #4a4e69;
+  padding-bottom: 1rem;
+}
+
+/* --- Layout da Seção do Jogo (Roleta + Controles) --- */
+.game-section {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  align-items: flex-start;
+  padding-bottom: 2rem;
+  border-bottom: 0.1rem solid #4a4e69;
+}
+
+@media (max-width: 800px) {
+  .game-section {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.betting-section-wrapper {
+  flex: 1;
+  min-width: 30rem;
+}
+
+.betting-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #3e3e70;
+  border-radius: 0.8rem;
+}
+
+/* Estilos de inputs, botões, game-info, result, chart-container, history-log
+ (Foram omitidos aqui para focar na roleta, mas assumimos que estão no arquivo completo) */
+
+/* ------------------------------------- */
+/* 2. CONTAINER E PONTEIRO */
+/* ------------------------------------- */
+
+.roulette-container {
+  /* Dimensões do círculo externo */
+  width: var(--roulette-size);
+  height: var(--roulette-size);
+  margin: 5rem auto;
+  /* Centraliza */
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow:
+    0 0 1.5rem rgba(0, 0, 0, 0.8),
+    inset 0 0 5rem rgba(255, 255, 255, 0.1);
+  background-color: var(--color-dark-bg);
+  /* Fundo caso as fatias falhem */
+}
+
+.roulette-pointer {
+  /* Ponteiro (Triângulo no topo) - Posicionado FORA do container para apontar para DENTRO */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 0;
+  height: 0;
+  border-left: 2rem solid transparent;
+  border-right: 2rem solid transparent;
+  border-bottom: 4rem solid var(--color-highlight);
+  z-index: 1000;
+}
+
+/* ------------------------------------- */
+/* 3. RODA DA ROLETA E ANIMAÇÃO */
+/* ------------------------------------- */
+
+.roulette-wheel {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+
+  /* Transição para a parada suave (5 segundos) */
+  transition: transform 5s cubic-bezier(0.3, 0.8, 0.7, 1);
+  z-index: 10;
+}
+
+
+/* ------------------------------------- */
+/* 4. SEGMENTOS DA ROLETA (CORREÇÃO DE GEOMETRIA) */
+/* ------------------------------------- */
+
+.wheel-segment {
+  /* --offset é o index * angle */
+  --offset: 0deg;
+  /* Placeholder */
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  transform-origin: 0% 100%;
+  /* Pivô no centro da roleta */
+  overflow: hidden;
+
+  /* 1. Gira para a posição inicial (var(--offset)) */
+  /* 2. Aplica skew para criar a forma de fatia. Usamos o complemento (var(--segment-skew)) */
+  transform: rotate(var(--offset)) skewY(var(--segment-skew));
+}
+
+/* Cores aplicadas via a variável --color */
+/* O seletor de atributo é pesado, mas é necessário para usar a variável CSS no JSX */
+.wheel-segment[style*="--color: var(--color-red)"] {
+  background-color: var(--color-red);
+}
+
+.wheel-segment[style*="--color: var(--color-black)"] {
+  background-color: var(--color-black);
+}
+
+.wheel-segment[style*="--color: var(--color-green)"] {
+  background-color: var(--color-green);
+}
+
+/* ------------------------------------- */
+/* 5. NÚMEROS DENTRO DOS SEGMENTOS (CORREÇÃO DE POSICIONAMENTO) */
+/* ------------------------------------- */
+
+.segment-number {
+  position: absolute;
+
+  /* Centraliza na borda externa. A posição é relativa ao tamanho da roleta. */
+  top: 1.5rem;
+  left: var(--half-size);
+  transform-origin: left center;
+
+  /* 1. Reverte o skew para o texto ficar reto. Usamos o complemento */
+  /* 2. Roda de volta pelo ângulo médio para centralizar na fatia */
+  transform: skewY(calc(0deg - var(--segment-skew))) rotate(calc(var(--segment-angle) / 2));
+
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
+  white-space: nowrap;
+}
+
+
+/* ------------------------------------- */
+/* 6. CENTRO DA ROLETA */
+/* ------------------------------------- */
+.roulette-container::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8rem;
+  /* 80px */
+  height: 8rem;
+  /* 80px */
+  border-radius: 50%;
+  background-color: var(--color-dark-bg);
+  border: 0.8rem solid var(--color-highlight);
+  /* 8px */
+  z-index: 50;
+  box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.8);
+}
+
+/* ------------------------------------- */
+/* 7. RESPONSIVIDADE */
+/* ------------------------------------- */
+@media (max-width: 600px) {
+  .roulette-container {
+    --roulette-size: 30rem;
+    /* Diminui a roleta para mobile */
+    --half-size: 15rem;
+  }
+
+  .segment-number {
+    font-size: 1.4rem;
+    /* Diminui a fonte do número */
+    left: var(--half-size);
+    /* Ajusta a posição do número */
+  }
+
+  .roulette-pointer {
+    border-left: 1.5rem solid transparent;
+    border-right: 1.5rem solid transparent;
+    border-bottom: 3rem solid var(--color-highlight);
+  }
+}

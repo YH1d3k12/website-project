@@ -11,6 +11,7 @@ import {
     Legend,
 } from 'chart.js';
 import { usePlayerData } from '../../hook/usePlayerData';
+import RouletteWheel from './wheel'; // Importar o novo componente
 import './styles.css';
 
 // Registrar componentes do ChartJS
@@ -154,19 +155,13 @@ const RouletteGame: React.FC = () => {
                 () => alert('Game Over! Você perdeu todo o seu capital.'),
                 10
             );
-            setPlayerData((prev: typeof playerData) => ({
-                ...prev,
-                gameOver: true,
-            }));
+            setPlayerData(prev => ({ ...prev, gameOver: true }));
         } else if (playerData.casinoBalance <= 0 && !playerData.gameOver) {
             setTimeout(
                 () => alert('Parabéns! Você levou o cassino à ruína!'),
                 10
             );
-            setPlayerData((prev: typeof playerData) => ({
-                ...prev,
-                gameOver: true,
-            }));
+            setPlayerData(prev => ({ ...prev, gameOver: true }));
         }
     }, [
         playerData.playerBalance,
@@ -183,12 +178,13 @@ const RouletteGame: React.FC = () => {
     };
 
     const resetGame = () => {
-        setPlayerData({
+        setPlayerData(prev => ({
+            ...prev,
             playerBalance: 100, // Valor inicial
             casinoBalance: 10000, // Valor inicial
             balanceHistory: [100],
             gameOver: false,
-        });
+        }));
         setGameHistory([]);
         setSelectedNumber(null);
     };
@@ -217,7 +213,7 @@ const RouletteGame: React.FC = () => {
         }
 
         const initialPlayerBalance = playerData.playerBalance;
-        setPlayerData((prev: typeof playerData) => ({
+        setPlayerData(prev => ({
             ...prev,
             playerBalance: prev.playerBalance - currentBet,
         }));
@@ -226,6 +222,7 @@ const RouletteGame: React.FC = () => {
 
     const spinWheel = (currentBet: number, initialPlayerBalance: number) => {
         setIsSpinning(true);
+        setSelectedNumber(null); // Limpa o número anterior antes de girar
 
         setTimeout(() => {
             let winningNumber: number;
@@ -267,54 +264,58 @@ const RouletteGame: React.FC = () => {
                 winningNumber = Math.floor(Math.random() * 37);
             }
 
-            setSelectedNumber(winningNumber);
+            // O tempo de giro da roleta é de 5 segundos (definido no CSS)
+            setTimeout(() => {
+                setSelectedNumber(winningNumber);
 
-            let winnings = 0;
-            let outcome: 'win' | 'loss' = 'loss';
+                let winnings = 0;
+                let outcome: 'win' | 'loss' = 'loss';
 
-            if (betOption === 'number' && winningNumber === betDetails) {
-                winnings = currentBet * 35;
-                outcome = 'win';
-            } else if (betOption === 'color') {
-                if (
-                    betDetails === 'red' &&
-                    redNumbers.includes(winningNumber)
-                ) {
-                    winnings = currentBet * 2;
+                if (betOption === 'number' && winningNumber === betDetails) {
+                    winnings = currentBet * 35;
                     outcome = 'win';
-                } else if (
-                    betDetails === 'black' &&
-                    blackNumbers.includes(winningNumber)
-                ) {
-                    winnings = currentBet * 2;
-                    outcome = 'win';
+                } else if (betOption === 'color') {
+                    if (
+                        betDetails === 'red' &&
+                        redNumbers.includes(winningNumber)
+                    ) {
+                        winnings = currentBet * 2;
+                        outcome = 'win';
+                    } else if (
+                        betDetails === 'black' &&
+                        blackNumbers.includes(winningNumber)
+                    ) {
+                        winnings = currentBet * 2;
+                        outcome = 'win';
+                    }
                 }
-            }
 
-            const finalBalance = initialPlayerBalance - currentBet + winnings;
+                const finalBalance =
+                    initialPlayerBalance - currentBet + winnings;
 
-            setPlayerData((prev: typeof playerData) => ({
-                ...prev,
-                playerBalance: prev.playerBalance + winnings,
-                casinoBalance: prev.casinoBalance - winnings,
-                balanceHistory: [...prev.balanceHistory, finalBalance],
-            }));
+                setPlayerData(prev => ({
+                    ...prev,
+                    playerBalance: prev.playerBalance + winnings,
+                    casinoBalance: prev.casinoBalance - winnings,
+                    balanceHistory: [...prev.balanceHistory, finalBalance],
+                }));
 
-            const historyEntry: BetHistoryEntry = {
-                round: gameHistory.length + 1,
-                initialBalance: initialPlayerBalance,
-                betAmount: currentBet,
-                betOption,
-                betDetails,
-                winningNumber,
-                winnings,
-                finalBalance,
-                outcome,
-            };
+                const historyEntry: BetHistoryEntry = {
+                    round: gameHistory.length + 1,
+                    initialBalance: initialPlayerBalance,
+                    betAmount: currentBet,
+                    betOption,
+                    betDetails,
+                    winningNumber,
+                    winnings,
+                    finalBalance,
+                    outcome,
+                };
 
-            setGameHistory(prev => [...prev, historyEntry]);
-            setIsSpinning(false);
-        }, 2000);
+                setGameHistory(prev => [...prev, historyEntry]);
+                setIsSpinning(false);
+            }, 5000); // Espera 5 segundos para a roleta parar
+        }, 10); // Pequeno delay para iniciar o giro
     };
 
     return (
@@ -401,7 +402,14 @@ const RouletteGame: React.FC = () => {
                 </div>
             )}
 
-            {selectedNumber !== null && (
+            {/* Roleta Visual - Posicionada entre a área de aposta e a área de resultado */}
+            <RouletteWheel
+                isSpinning={isSpinning}
+                winningNumber={selectedNumber}
+                numbersData={numbersData}
+            />
+
+            {selectedNumber !== null && !isSpinning && (
                 <div className="result">
                     <h3>
                         O número sorteado foi:{' '}
