@@ -12,7 +12,6 @@ import {
 } from 'chart.js';
 import { usePlayerData } from '../../hook/usePlayerData';
 import RouletteWheel from './wheel'; // Importar o novo componente
-import './styles.css';
 
 // Registrar componentes do ChartJS
 ChartJS.register(
