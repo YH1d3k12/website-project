@@ -64,6 +64,16 @@ const SAMPLE_ADS: Ad[] = [
         ctaUrl: '#',
         sponsor: 'EduPlatform',
     },
+    {
+        id: 'sample-4',
+        title: 'Maria is looking for you',
+        description: 'Maria is waiting for your message. Don\'t keep her waiting!',
+        image: 'https://lanoticias.com.br/wp-content/uploads/2025/04/prostituta-que-diz-ter-ficado-com-neymar-agora-revela-outro-famoso-950x554.jpg',
+        alt: 'Person',
+        ctaText: 'Confirm',
+        ctaUrl: '#',
+        sponsor: 'XnXX',
+    }
 ];
 
 export default function RandomAdRotator({
