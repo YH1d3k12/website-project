@@ -20,24 +20,6 @@
   /* Cor da Roleta/Sucesso Verde */
 }
 
-/* 1. Ajuste de Fonte Base para 1rem = 10px */
-html {
-  /* Define o tamanho base para facilitar 1rem = 10px */
-  font-size: 62.5%;
-  /* 10px / 16px (default) = 62.5% */
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--color-dark-bg);
-  color: #e4e4e4;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  font-size: 1.6rem;
-  /* Tamanho do corpo 16px */
-}
-
 .roulette-game {
   max-width: 120rem;
   /* 1200px */
@@ -320,10 +302,11 @@ tbody tr:hover {
   --color-green: #4caf50;
   --roulette-size: 45rem;
   /* 450px de diâmetro */
-  --segment-angle: 9.729deg;
-  /* 360 / 37 */
-  --segment-skew: 80.271deg;
-  /* 90 - 9.729 = 80.271 deg (o complemento) */
+  
+  /* ESTAS VARIÁVEIS NÃO SÃO MAIS USADAS PELA NOVA TÉCNICA */
+  /* --segment-angle: 9.729deg; */
+  /* --segment-skew: 80.271deg; */
+
   --half-size: 22.5rem;
 }
 
@@ -341,7 +324,7 @@ body {
 }
 
 /* --- ESTILOS DO JOGO (Foram mantidos no início para consistência) --- */
-
+/* (Estes são duplicados do seu arquivo original, mas mantidos como pedido) */
 .roulette-game {
   max-width: 120rem;
   margin: 3rem auto;
@@ -398,7 +381,7 @@ body {
  (Foram omitidos aqui para focar na roleta, mas assumimos que estão no arquivo completo) */
 
 /* ------------------------------------- */
-/* 2. CONTAINER E PONTEIRO */
+/* 2. CONTAINER E PONTEIRO (AJUSTADO) */
 /* ------------------------------------- */
 
 .roulette-container {
@@ -409,26 +392,37 @@ body {
   /* Centraliza */
   position: relative;
   border-radius: 50%;
-  overflow: hidden;
+  
+  /* Borda externa estilizada */
+  border: 1rem solid #333;
   box-shadow:
     0 0 1.5rem rgba(0, 0, 0, 0.8),
-    inset 0 0 5rem rgba(255, 255, 255, 0.1);
+    inset 0 0 3rem rgba(0, 0, 0, 0.5);
+  
   background-color: var(--color-dark-bg);
   /* Fundo caso as fatias falhem */
+  
+  /* Overflow hidden não é mais necessário para as fatias */
+  /* overflow: hidden; */ 
 }
 
 .roulette-pointer {
-  /* Ponteiro (Triângulo no topo) - Posicionado FORA do container para apontar para DENTRO */
+  /* Ponteiro (Triângulo no topo) - Apontando PARA DENTRO */
   position: absolute;
-  top: 0;
+  top: -0.5rem; /* Senta-se sobre a borda */
   left: 50%;
-  transform: translate(-50%, -100%);
+  transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 2rem solid transparent;
-  border-right: 2rem solid transparent;
-  border-bottom: 4rem solid var(--color-highlight);
+  
+  /* Triângulo apontando para baixo */
+  border-left: 1.5rem solid transparent;
+  border-right: 1.5rem solid transparent;
+  border-top: 3rem solid var(--color-highlight); /* Cor do ponteiro */
+  
   z-index: 1000;
+  /* Sombra para destacar */
+  filter: drop-shadow(0 0.3rem 0.2rem rgba(0, 0, 0, 0.5));
 }
 
 /* ------------------------------------- */
@@ -441,75 +435,58 @@ body {
   border-radius: 50%;
   position: relative;
 
+  /* O 'background' (conic-gradient) será aplicado via style inline pelo React */
+  
   /* Transição para a parada suave (5 segundos) */
-  transition: transform 5s cubic-bezier(0.3, 0.8, 0.7, 1);
+  transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
   z-index: 10;
 }
 
 
-/* ------------------------------------- */
-/* 4. SEGMENTOS DA ROLETA (CORREÇÃO DE GEOMETRIA) */
-/* ------------------------------------- */
-
-.wheel-segment {
-  /* --offset é o index * angle */
-  --offset: 0deg;
-  /* Placeholder */
-
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 50%;
-  transform-origin: 0% 100%;
-  /* Pivô no centro da roleta */
-  overflow: hidden;
-
-  /* 1. Gira para a posição inicial (var(--offset)) */
-  /* 2. Aplica skew para criar a forma de fatia. Usamos o complemento (var(--segment-skew)) */
-  transform: rotate(var(--offset)) skewY(var(--segment-skew));
-}
-
-/* Cores aplicadas via a variável --color */
-/* O seletor de atributo é pesado, mas é necessário para usar a variável CSS no JSX */
-.wheel-segment[style*="--color: var(--color-red)"] {
-  background-color: var(--color-red);
-}
-
-.wheel-segment[style*="--color: var(--color-black)"] {
-  background-color: var(--color-black);
-}
-
-.wheel-segment[style*="--color: var(--color-green)"] {
-  background-color: var(--color-green);
-}
+/* -------------------------------------------------- */
+/* --- INÍCIO DA CORREÇÃO (Substitui seções 4 e 5) --- */
+/* -------------------------------------------------- */
 
 /* ------------------------------------- */
-/* 5. NÚMEROS DENTRO DOS SEGMENTOS (CORREÇÃO DE POSICIONAMENTO) */
+/* 4. NÚMEROS (NOVO MÉTODO 'FORA DA CAIXA') */
 /* ------------------------------------- */
 
 .segment-number {
   position: absolute;
-
-  /* Centraliza na borda externa. A posição é relativa ao tamanho da roleta. */
-  top: 1.5rem;
-  left: var(--half-size);
-  transform-origin: left center;
-
-  /* 1. Reverte o skew para o texto ficar reto. Usamos o complemento */
-  /* 2. Roda de volta pelo ângulo médio para centralizar na fatia */
-  transform: skewY(calc(0deg - var(--segment-skew))) rotate(calc(var(--segment-angle) / 2));
-
-  font-size: 1.8rem;
+  /* Âncora no centro do círculo */
+  top: 50%;
+  left: 50%;
+  
+  /* O transform inline do React faz a mágica: */
+  /* 1. rotate(angle) -> Gira o 'braço' para a posição */
+  /* 2. translateY(-Xrem) -> Move o número para a borda */
+  /* 3. rotate(90deg) -> Deixa o número 'de pé' (paralelo à borda) */
+  
+  /* Estilização do texto */
+  font-size: 1.6rem;
   font-weight: bold;
   color: white;
   text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
-  white-space: nowrap;
+  
+  /* Centraliza o <span> dentro do <div> */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Define um 'hitbox' para o número e centraliza o transform */
+  width: 3rem; 
+  height: 2rem;
+  margin-top: -1rem;  /* -height/2 */
+  margin-left: -1.5rem; /* -width/2 */
 }
+
+/* ------------------------------------- */
+/* --- FIM DA CORREÇÃO --- */
+/* ------------------------------------- */
 
 
 /* ------------------------------------- */
-/* 6. CENTRO DA ROLETA */
+/* 6. CENTRO DA ROLETA (AJUSTADO) */
 /* ------------------------------------- */
 .roulette-container::after {
   content: '';
@@ -522,33 +499,47 @@ body {
   height: 8rem;
   /* 80px */
   border-radius: 50%;
-  background-color: var(--color-dark-bg);
-  border: 0.8rem solid var(--color-highlight);
-  /* 8px */
+  
+  /* Efeito metálico */
+  background: radial-gradient(circle, #888 0%, #333 100%);
+  border: 0.8rem solid #555;
+  
   z-index: 50;
-  box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.8), inset 0 0 1rem rgba(0, 0, 0, 0.8);
 }
 
 /* ------------------------------------- */
-/* 7. RESPONSIVIDADE */
+/* 7. RESPONSIVIDADE (AJUSTADO) */
 /* ------------------------------------- */
 @media (max-width: 600px) {
   .roulette-container {
     --roulette-size: 30rem;
     /* Diminui a roleta para mobile */
     --half-size: 15rem;
+    border-width: 0.5rem; /* Ajusta a borda */
   }
 
+  /* Ajusta o novo centro */
+  .roulette-container::after {
+      width: 6rem;
+      height: 6rem;
+      border-width: 0.5rem;
+  }
+
+  /* Ajusta o novo .segment-number */
   .segment-number {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     /* Diminui a fonte do número */
-    left: var(--half-size);
-    /* Ajusta a posição do número */
+    
+    /* O 'left' não é mais usado para posicionar, o transform faz tudo */
+    /* left: var(--half-size); */ 
   }
 
+  /* Ajusta o novo .roulette-pointer */
   .roulette-pointer {
-    border-left: 1.5rem solid transparent;
-    border-right: 1.5rem solid transparent;
-    border-bottom: 3rem solid var(--color-highlight);
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-top: 2rem solid var(--color-highlight);
+    /* border-bottom removido */
   }
 }
