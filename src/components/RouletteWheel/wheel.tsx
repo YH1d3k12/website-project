@@ -63,36 +63,63 @@ const RouletteWheel: React.FC<RouletteWheelProps> = ({
             setRotation(stopAngle);
         }
     }, [isSpinning, winningNumber, numbersData]);
+// --- ⭐ NOVA LÓGICA "OUT OF THE BOX" ⭐ ---
 
-    // Mapeia os números para elementos visuais
-    const wheelSegments = numbersData.map((item, index) => {
+    // 1. Mapeia as cores do CSS para o JS
+    const colorMap = {
+        green: 'var(--color-green)',
+        red: 'var(--color-red)',
+        black: 'var(--color-black)',
+    };
+
+    // 2. Cria a string do conic-gradient dinamicamente
+    const gradientString = numbersData
+        .map((item, index) => {
+            const color = colorMap[item.color];
+            const startAngle = index * SEGMENT_ANGLE;
+            const endAngle = (index + 1) * SEGMENT_ANGLE;
+            // Define a cor para cada fatia
+            return `${color} ${startAngle}deg ${endAngle}deg`;
+        })
+        .join(', ');
+
+    // 3. Define o estilo da roleta (fundo e rotação da animação)
+    const wheelStyle = {
+        background: `conic-gradient(${gradientString})`,
+        transform: `rotate(${rotation}deg)`,
+    } as React.CSSProperties;
+
+    // 4. Mapeia os números para elementos posicionados
+    const wheelNumbers = numbersData.map((item, index) => {
+        // Ângulo para o *centro* do segmento
+        const angle = index * SEGMENT_ANGLE + SEGMENT_ANGLE / 2;
+
         const style = {
-            '--i': index,
-            '--color':
-                item.color === 'red'
-                    ? 'var(--color-red)'
-                    : item.color === 'black'
-                    ? 'var(--color-black)'
-                    : 'var(--color-green)',
-            '--angle': `${SEGMENT_ANGLE}deg`,
-            '--offset': `${index * SEGMENT_ANGLE}deg`,
+            /* 1. Gira o container do número para a posição (aponta para fora)
+              2. Move para a borda (metade do tamanho da roleta - um offset)
+              3. Gira o texto 90deg para ele ficar "deitado"
+            */
+            transform: `rotate(${angle}deg) translateY(calc(var(--roulette-size) / -2 + 2.5rem)) rotate(90deg)`,
         } as React.CSSProperties;
 
         return (
-            <div key={item.number} className="wheel-segment" style={style}>
-                <span className="segment-number">{item.number}</span>
+            <div key={item.number} className="segment-number" style={style}>
+                <span>{item.number}</span>
             </div>
         );
     });
+    
+    // --- FIM DA NOVA LÓGICA ---
 
     return (
         <div className="roulette-container">
+            {/* O ponteiro agora está em CSS puro para ser mais nítido */}
             <div className="roulette-pointer"></div>
             <div
                 className={`roulette-wheel ${isSpinning ? 'spinning' : ''}`}
-                style={{ transform: `rotate(${rotation}deg)` }}
+                style={wheelStyle} // Aplicando o novo estilo de fundo + rotação
             >
-                {wheelSegments}
+                {wheelNumbers} {/* Renderizando os números por cima */}
             </div>
         </div>
     );
