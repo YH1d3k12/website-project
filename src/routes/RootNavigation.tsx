@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Body from '../components/Layout';
 import Home from '../pages/Home/';
 import Games from '../pages/Games/index.tsx';
+import Maintenance from '../pages/Maintenance/index.tsx';
 
 export default function RootNavigation(): JSX.Element {
     return (
@@ -10,6 +11,7 @@ export default function RootNavigation(): JSX.Element {
                 <Route path="/" element={<Body />} >
                     <Route path="/" element={<Home />} />
                     <Route path="/games" element={<Games />} />
+                    <Route path="*" element={<Maintenance />} />
                 </Route>
             </Routes>
         </BrowserRouter>
