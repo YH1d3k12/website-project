@@ -287,6 +287,12 @@ const RouletteGame: React.FC = () => {
                     ) {
                         winnings = currentBet * 2;
                         outcome = 'win';
+                    } else if (
+                        betDetails === 'green' &&
+                        winningNumber === 0
+                    ) {
+                        winnings = currentBet * 35;
+                        outcome = 'win';
                     }
                 }
 
@@ -393,6 +399,7 @@ const RouletteGame: React.FC = () => {
                                 <option value="">Selecione</option>
                                 <option value="red">Vermelho</option>
                                 <option value="black">Preto</option>
+                                <option value="green">Verde</option>
                             </select>
                         </div>
                     )}
