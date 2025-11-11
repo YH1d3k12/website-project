@@ -20,24 +20,6 @@
   /* Cor da Roleta/Sucesso Verde */
 }
 
-/* 1. Ajuste de Fonte Base para 1rem = 10px */
-html {
-  /* Define o tamanho base para facilitar 1rem = 10px */
-  font-size: 62.5%;
-  /* 10px / 16px (default) = 62.5% */
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--color-dark-bg);
-  color: #e4e4e4;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  font-size: 1.6rem;
-  /* Tamanho do corpo 16px */
-}
-
 .roulette-game {
   max-width: 120rem;
   /* 1200px */
