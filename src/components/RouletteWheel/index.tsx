@@ -382,9 +382,39 @@ const RouletteGame: React.FC = () => {
                             <label>Número (0-36):</label>
                             <input
                                 type="number"
-                                onChange={e =>
-                                    setBetDetails(parseInt(e.target.value, 10))
-                                }
+                                // Garante que o input seja controlado pelo estado
+                                value={betDetails ?? undefined} 
+                                onChange={e => {
+                                    const rawValue = e.target.value;
+                                    const min = 0;
+                                    const max = 36;
+                                    
+                                    // 1. Se o campo for esvaziado, define o estado como string vazia.
+                                    // Isso permite que o usuário apague todos os dígitos.
+                                    if (rawValue === '') {
+                                        setBetDetails(''); 
+                                        return;
+                                    }
+
+                                    // 2. Converte para inteiro.
+                                    const value = parseInt(rawValue, 10);
+                                    
+                                    // 3. Verifica se a conversão falhou (ex: digitou 'e' ou outro caractere inválido).
+                                    // Se falhar, não atualiza o estado ou mantém o valor anterior, dependendo da sua preferência.
+                                    // Aqui, vamos manter o valor anterior se for NaN.
+                                    if (isNaN(value)) {
+                                        // O setBetDetails NÃO é chamado, o input 'congela' no último valor válido.
+                                        return;
+                                    }
+
+                                    // 4. Aplica a limitação CLAMP:
+                                    // a) Math.min(max, value) garante que o valor não passe de 36.
+                                    // b) Math.max(min, resultado) garante que o valor não seja menor que 0.
+                                    const limitedValue = Math.max(min, Math.min(max, value));
+                                    
+                                    // 5. Atualiza o estado com o valor limitado.
+                                    setBetDetails(limitedValue);
+                                }}
                                 min="0"
                                 max="36"
                             />
