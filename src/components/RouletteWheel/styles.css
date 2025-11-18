@@ -1,69 +1,44 @@
-/* --- Variáveis e Reset Básico --- */
 :root {
   --color-dark-bg: #1a1a2e;
-  /* Fundo principal escuro */
   --color-panel-bg: #2c2c54;
-  /* Fundo dos painéis e áreas de conteúdo */
   --color-element-bg: #3e3e70;
-  /* Fundo de inputs/selects/controles */
   --color-border: #4a4e69;
-  /* Bordas e divisores */
   --color-highlight: #a4e6ff;
-  /* Destaque principal (títulos) */
   --color-action: #00bcd4;
-  /* Cor primária do botão */
   --color-red: #f44336;
-  /* Cor da Roleta/Alerta Vermelho */
   --color-black: #212121;
-  /* Cor da Roleta Preto */
   --color-green: #4caf50;
-  /* Cor da Roleta/Sucesso Verde */
 }
 
 .roulette-game {
   max-width: 120rem;
-  /* 1200px */
   margin: 3rem auto;
-  /* 30px */
   padding: 2rem;
-  /* 20px */
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  /* 30px */
   background-color: var(--color-panel-bg);
   border-radius: 1.2rem;
-  /* 12px */
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
-  /* 10px 30px */
 }
 
 .roulette-game h2 {
   font-size: 3.2rem;
-  /* 32px */
   text-align: center;
   color: var(--color-highlight);
   border-bottom: 0.2rem solid var(--color-border);
-  /* 2px */
   padding-bottom: 1rem;
-  /* 10px */
 }
 
-/* --- Informações de Saldo e Game Over --- */
 .game-info {
   display: flex;
   justify-content: space-around;
   padding: 1.5rem;
-  /* 15px */
   border: 0.1rem solid var(--color-border);
-  /* 1px */
   border-radius: 0.8rem;
-  /* 8px */
   background-color: var(--color-element-bg);
   margin-bottom: 2rem;
-  /* 20px */
   font-size: 1.8rem;
-  /* 18px */
   font-weight: bold;
 }
 
@@ -78,61 +53,46 @@
 .game-over-message {
   text-align: center;
   padding: 3rem;
-  /* 30px */
   background-color: var(--color-red);
   color: white;
   border-radius: 1rem;
-  /* 10px */
   margin: 2rem 0;
-  /* 20px */
 }
 
 .game-over-message h3 {
   font-size: 2.4rem;
-  /* 24px */
   margin-top: 0;
 }
 
-/* --- Controles de Aposta --- */
 .betting-controls {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  /* 200px */
   gap: 2rem;
-  /* 20px */
   padding: 2rem;
-  /* 20px */
   background-color: var(--color-element-bg);
   border-radius: 0.8rem;
-  /* 8px */
 }
 
-.betting-controls>div {
+.betting-controls > div {
   display: flex;
   flex-direction: column;
 }
 
 label {
   margin-bottom: 0.5rem;
-  /* 5px */
   font-weight: 600;
   font-size: 1.4rem;
-  /* 14px */
 }
 
 input[type="number"],
 select {
   padding: 1rem;
-  /* 10px */
   border-radius: 0.6rem;
-  /* 6px */
   border: 0.1rem solid var(--color-border);
-  /* 1px */
   background-color: var(--color-dark-bg);
   color: #e4e4e4;
   transition: border-color 0.2s;
   font-size: 1.6rem;
-  /* 16px */
 }
 
 input[type="number"]:focus,
@@ -143,17 +103,14 @@ select:focus {
 
 button {
   padding: 1.2rem;
-  /* 12px */
   border: none;
   border-radius: 0.6rem;
-  /* 6px */
   background-color: var(--color-action);
   color: var(--color-dark-bg);
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s, opacity 0.2s;
   font-size: 1.6rem;
-  /* 16px */
 }
 
 button:hover:not(:disabled) {
@@ -166,115 +123,82 @@ button:disabled {
   opacity: 0.7;
 }
 
-/* --- Resultado do Giro --- */
 .result {
   text-align: center;
   padding: 1.5rem;
-  /* 15px */
   margin: 2rem 0;
-  /* 20px */
   border-radius: 0.8rem;
-  /* 8px */
   background-color: var(--color-element-bg);
   border: 0.1rem solid var(--color-border);
-  /* 1px */
 }
 
 .result h3 {
   margin: 0;
   font-size: 2rem;
-  /* 20px */
 }
 
 .result span {
   font-weight: bold;
   font-size: 1.8rem;
-  /* 18px */
 }
 
-/* --- Configurações do Jogo (Game Settings) --- */
 .game-settings {
   padding: 2rem;
-  /* 20px */
   background-color: var(--color-element-bg);
   border-radius: 0.8rem;
-  /* 8px */
   border: 0.1rem solid var(--color-border);
-  /* 1px */
   margin-top: 2rem;
-  /* 20px */
 }
 
 .game-settings h4 {
   font-size: 1.8rem;
-  /* 18px */
   color: var(--color-highlight);
   margin-top: 0;
   border-bottom: 0.1rem dashed var(--color-border);
-  /* 1px */
   padding-bottom: 0.5rem;
-  /* 5px */
 }
 
-.game-settings>div {
+.game-settings > div {
   margin-bottom: 1rem;
-  /* 10px */
 }
 
-/* --- Gráfico (Chart) --- */
 .chart-container {
   width: 100%;
   height: 40rem;
-  /* 400px - Altura fixa para o gráfico */
   margin: 3rem 0;
-  /* 30px */
   padding: 2rem;
-  /* 20px */
   background-color: var(--color-element-bg);
   border-radius: 1.2rem;
-  /* 12px */
   box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3);
-  /* 4px 10px */
 }
 
-/* --- Histórico de Rodadas --- */
 .history-log {
   margin-top: 3rem;
-  /* 30px */
   padding: 2rem;
-  /* 20px */
   background-color: var(--color-element-bg);
   border-radius: 1.2rem;
-  /* 12px */
   box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3);
-  /* 4px 10px */
   overflow-x: auto;
-  /* Garante scroll em telas pequenas */
 }
 
 .history-log h3 {
   color: var(--color-highlight);
   margin-top: 0;
   font-size: 2.2rem;
-  /* 22px */
 }
 
-table {
+.history-log table {
   width: 100%;
   min-width: 80rem;
-  /* 800px - Garante que a tabela não fique espremida */
   border-collapse: collapse;
   font-size: 1.4rem;
-  /* 14px */
 }
 
-th,
-td {
+.history-log th,
+.history-log td {
   padding: 1.2rem 1rem;
-  /* 12px 10px */
   text-align: left;
   border-bottom: 0.1rem solid var(--color-border);
-  /* 1px */
 }
 
 th {
@@ -293,7 +217,6 @@ tbody tr:hover {
   background-color: #4a4e69;
 }
 
-/* 1. VARIÁVEIS DE COR E SETUP BÁSICO */
 :root {
   --color-dark-bg: #1a1a2e;
   --color-highlight: #a4e6ff;
@@ -301,30 +224,9 @@ tbody tr:hover {
   --color-black: #212121;
   --color-green: #4caf50;
   --roulette-size: 45rem;
-  /* 450px de diâmetro */
-  
-  /* ESTAS VARIÁVEIS NÃO SÃO MAIS USADAS PELA NOVA TÉCNICA */
-  /* --segment-angle: 9.729deg; */
-  /* --segment-skew: 80.271deg; */
-
   --half-size: 22.5rem;
 }
 
-/* Base de 1rem = 10px */
-html {
-  font-size: 62.5%;
-}
-
-body {
-  background-color: var(--color-dark-bg);
-  font-family: 'Inter', sans-serif;
-  color: #e4e4e4;
-  line-height: 1.6;
-  font-size: 1.6rem;
-}
-
-/* --- ESTILOS DO JOGO (Foram mantidos no início para consistência) --- */
-/* (Estes são duplicados do seu arquivo original, mas mantidos como pedido) */
 .roulette-game {
   max-width: 120rem;
   margin: 3rem auto;
@@ -333,7 +235,6 @@ body {
   flex-direction: column;
   gap: 3rem;
   background-color: #2c2c54;
-  /* Usando cor fixa para painéis */
   border-radius: 1.2rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
 }
@@ -346,7 +247,6 @@ body {
   padding-bottom: 1rem;
 }
 
-/* --- Layout da Seção do Jogo (Roleta + Controles) --- */
 .game-section {
   display: flex;
   flex-direction: row;
@@ -377,117 +277,57 @@ body {
   border-radius: 0.8rem;
 }
 
-/* Estilos de inputs, botões, game-info, result, chart-container, history-log
- (Foram omitidos aqui para focar na roleta, mas assumimos que estão no arquivo completo) */
-
-/* ------------------------------------- */
-/* 2. CONTAINER E PONTEIRO (AJUSTADO) */
-/* ------------------------------------- */
-
 .roulette-container {
-  /* Dimensões do círculo externo */
   width: var(--roulette-size);
   height: var(--roulette-size);
   margin: 5rem auto;
-  /* Centraliza */
   position: relative;
   border-radius: 50%;
-  
-  /* Borda externa estilizada */
   border: 1rem solid #333;
-  box-shadow:
-    0 0 1.5rem rgba(0, 0, 0, 0.8),
-    inset 0 0 3rem rgba(0, 0, 0, 0.5);
-  
+  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.8), inset 0 0 3rem rgba(0, 0, 0, 0.5);
   background-color: var(--color-dark-bg);
-  /* Fundo caso as fatias falhem */
-  
-  /* Overflow hidden não é mais necessário para as fatias */
-  /* overflow: hidden; */ 
 }
 
 .roulette-pointer {
-  /* Ponteiro (Triângulo no topo) - Apontando PARA DENTRO */
   position: absolute;
-  top: -0.5rem; /* Senta-se sobre a borda */
+  top: -0.5rem;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  
-  /* Triângulo apontando para baixo */
   border-left: 1.5rem solid transparent;
   border-right: 1.5rem solid transparent;
-  border-top: 3rem solid var(--color-highlight); /* Cor do ponteiro */
-  
+  border-top: 3rem solid var(--color-highlight);
   z-index: 1000;
-  /* Sombra para destacar */
   filter: drop-shadow(0 0.3rem 0.2rem rgba(0, 0, 0, 0.5));
 }
-
-/* ------------------------------------- */
-/* 3. RODA DA ROLETA E ANIMAÇÃO */
-/* ------------------------------------- */
 
 .roulette-wheel {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   position: relative;
-
-  /* O 'background' (conic-gradient) será aplicado via style inline pelo React */
-  
-  /* Transição para a parada suave (5 segundos) */
   transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
   z-index: 10;
 }
 
-
-/* -------------------------------------------------- */
-/* --- INÍCIO DA CORREÇÃO (Substitui seções 4 e 5) --- */
-/* -------------------------------------------------- */
-
-/* ------------------------------------- */
-/* 4. NÚMEROS (NOVO MÉTODO 'FORA DA CAIXA') */
-/* ------------------------------------- */
-
 .segment-number {
   position: absolute;
-  /* Âncora no centro do círculo */
   top: 50%;
   left: 50%;
-  
-  /* O transform inline do React faz a mágica: */
-  /* 1. rotate(angle) -> Gira o 'braço' para a posição */
-  /* 2. translateY(-Xrem) -> Move o número para a borda */
-  /* 3. rotate(90deg) -> Deixa o número 'de pé' (paralelo à borda) */
-  
-  /* Estilização do texto */
   font-size: 1.6rem;
   font-weight: bold;
   color: white;
   text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
-  
-  /* Centraliza o <span> dentro do <div> */
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  /* Define um 'hitbox' para o número e centraliza o transform */
-  width: 3rem; 
+  width: 3rem;
   height: 2rem;
-  margin-top: -1rem;  /* -height/2 */
-  margin-left: -1.5rem; /* -width/2 */
+  margin-top: -1rem;
+  margin-left: -1.5rem;
 }
 
-/* ------------------------------------- */
-/* --- FIM DA CORREÇÃO --- */
-/* ------------------------------------- */
-
-
-/* ------------------------------------- */
-/* 6. CENTRO DA ROLETA (AJUSTADO) */
-/* ------------------------------------- */
 .roulette-container::after {
   content: '';
   position: absolute;
@@ -495,51 +335,34 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 8rem;
-  /* 80px */
   height: 8rem;
-  /* 80px */
   border-radius: 50%;
-  
-  /* Efeito metálico */
   background: radial-gradient(circle, #888 0%, #333 100%);
   border: 0.8rem solid #555;
-  
   z-index: 50;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.8), inset 0 0 1rem rgba(0, 0, 0, 0.8);
 }
 
-/* ------------------------------------- */
-/* 7. RESPONSIVIDADE (AJUSTADO) */
-/* ------------------------------------- */
 @media (max-width: 600px) {
   .roulette-container {
     --roulette-size: 30rem;
-    /* Diminui a roleta para mobile */
     --half-size: 15rem;
-    border-width: 0.5rem; /* Ajusta a borda */
+    border-width: 0.5rem;
   }
 
-  /* Ajusta o novo centro */
   .roulette-container::after {
-      width: 6rem;
-      height: 6rem;
-      border-width: 0.5rem;
+    width: 6rem;
+    height: 6rem;
+    border-width: 0.5rem;
   }
 
-  /* Ajusta o novo .segment-number */
   .segment-number {
     font-size: 1.2rem;
-    /* Diminui a fonte do número */
-    
-    /* O 'left' não é mais usado para posicionar, o transform faz tudo */
-    /* left: var(--half-size); */ 
   }
 
-  /* Ajusta o novo .roulette-pointer */
   .roulette-pointer {
     border-left: 1rem solid transparent;
     border-right: 1rem solid transparent;
     border-top: 2rem solid var(--color-highlight);
-    /* border-bottom removido */
   }
 }
