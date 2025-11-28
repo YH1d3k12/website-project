@@ -8,8 +8,14 @@
   --color-red: #f44336;
   --color-black: #212121;
   --color-green: #4caf50;
+
+  --roulette-size: 45rem;
+  --half-size: 22.5rem;
 }
 
+/* ===========================================
+   ROOT ROULETTE COMPONENT WRAPPER
+   =========================================== */
 .roulette-game {
   max-width: 120rem;
   margin: 3rem auto;
@@ -30,7 +36,10 @@
   padding-bottom: 1rem;
 }
 
-.game-info {
+/* ===========================================
+   GAME INFO
+   =========================================== */
+.roulette-game .game-info {
   display: flex;
   justify-content: space-around;
   padding: 1.5rem;
@@ -42,15 +51,18 @@
   font-weight: bold;
 }
 
-.game-info p:first-child {
+.roulette-game .game-info p:first-child {
   color: var(--color-green);
 }
 
-.game-info p:last-child {
+.roulette-game .game-info p:last-child {
   color: var(--color-red);
 }
 
-.game-over-message {
+/* ===========================================
+   GAME OVER MESSAGE
+   =========================================== */
+.roulette-game .game-over-message {
   text-align: center;
   padding: 3rem;
   background-color: var(--color-red);
@@ -59,12 +71,15 @@
   margin: 2rem 0;
 }
 
-.game-over-message h3 {
+.roulette-game .game-over-message h3 {
   font-size: 2.4rem;
   margin-top: 0;
 }
 
-.betting-controls {
+/* ===========================================
+   BETTING CONTROLS
+   =========================================== */
+.roulette-game .betting-controls {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 2rem;
@@ -73,19 +88,21 @@
   border-radius: 0.8rem;
 }
 
-.betting-controls > div {
+.roulette-game .betting-controls > div {
   display: flex;
   flex-direction: column;
 }
 
-label {
+/* Scoped labels */
+.roulette-game label {
   margin-bottom: 0.5rem;
   font-weight: 600;
   font-size: 1.4rem;
 }
 
-input[type="number"],
-select {
+/* Scoped inputs */
+.roulette-game input[type="number"],
+.roulette-game select {
   padding: 1rem;
   border-radius: 0.6rem;
   border: 0.1rem solid var(--color-border);
@@ -95,13 +112,14 @@ select {
   font-size: 1.6rem;
 }
 
-input[type="number"]:focus,
-select:focus {
+.roulette-game input[type="number"]:focus,
+.roulette-game select:focus {
   border-color: var(--color-action);
   outline: none;
 }
 
-button {
+/* Scoped button */
+.roulette-game button {
   padding: 1.2rem;
   border: none;
   border-radius: 0.6rem;
@@ -113,17 +131,20 @@ button {
   font-size: 1.6rem;
 }
 
-button:hover:not(:disabled) {
+.roulette-game button:hover:not(:disabled) {
   background-color: #00e4ff;
 }
 
-button:disabled {
+.roulette-game button:disabled {
   background-color: #666;
   cursor: not-allowed;
   opacity: 0.7;
 }
 
-.result {
+/* ===========================================
+   RESULT BOX
+   =========================================== */
+.roulette-game .result {
   text-align: center;
   padding: 1.5rem;
   margin: 2rem 0;
@@ -132,17 +153,20 @@ button:disabled {
   border: 0.1rem solid var(--color-border);
 }
 
-.result h3 {
+.roulette-game .result h3 {
   margin: 0;
   font-size: 2rem;
 }
 
-.result span {
+.roulette-game .result span {
   font-weight: bold;
   font-size: 1.8rem;
 }
 
-.game-settings {
+/* ===========================================
+   GAME SETTINGS
+   =========================================== */
+.roulette-game .game-settings {
   padding: 2rem;
   background-color: var(--color-element-bg);
   border-radius: 0.8rem;
@@ -150,7 +174,7 @@ button:disabled {
   margin-top: 2rem;
 }
 
-.game-settings h4 {
+.roulette-game .game-settings h4 {
   font-size: 1.8rem;
   color: var(--color-highlight);
   margin-top: 0;
@@ -158,11 +182,14 @@ button:disabled {
   padding-bottom: 0.5rem;
 }
 
-.game-settings > div {
+.roulette-game .game-settings > div {
   margin-bottom: 1rem;
 }
 
-.chart-container {
+/* ===========================================
+   CHART
+   =========================================== */
+.roulette-game .chart-container {
   width: 100%;
   height: 40rem;
   margin: 3rem 0;
@@ -172,36 +199,40 @@ button:disabled {
   box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3);
 }
 
-.history-log {
+/* ===========================================
+   HISTORY LOG
+   =========================================== */
+.roulette-game .history-log {
   margin-top: 3rem;
   padding: 2rem;
   background-color: var(--color-element-bg);
   border-radius: 1.2rem;
-  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
   overflow-x: auto;
 }
 
-.history-log h3 {
+.roulette-game .history-log h3 {
   color: var(--color-highlight);
   margin-top: 0;
   font-size: 2.2rem;
 }
 
-.history-log table {
+.roulette-game .history-log table {
   width: 100%;
   min-width: 80rem;
   border-collapse: collapse;
   font-size: 1.4rem;
 }
 
-.history-log th,
-.history-log td {
+/* Scoped table headers and cells */
+.roulette-game th,
+.roulette-game td {
   padding: 1.2rem 1rem;
   text-align: left;
   border-bottom: 0.1rem solid var(--color-border);
 }
 
-th {
+.roulette-game th {
   background-color: var(--color-dark-bg);
   color: white;
   font-weight: 700;
@@ -209,74 +240,17 @@ th {
   top: 0;
 }
 
-tbody tr:nth-child(even) {
+.roulette-game tbody tr:nth-child(even) {
   background-color: #353564;
 }
 
-tbody tr:hover {
+.roulette-game tbody tr:hover {
   background-color: #4a4e69;
 }
 
-:root {
-  --color-dark-bg: #1a1a2e;
-  --color-highlight: #a4e6ff;
-  --color-red: #f44336;
-  --color-black: #212121;
-  --color-green: #4caf50;
-  --roulette-size: 45rem;
-  --half-size: 22.5rem;
-}
-
-.roulette-game {
-  max-width: 120rem;
-  margin: 3rem auto;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  background-color: #2c2c54;
-  border-radius: 1.2rem;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
-}
-
-.roulette-game h2 {
-  font-size: 3.2rem;
-  text-align: center;
-  color: var(--color-highlight);
-  border-bottom: 0.2rem solid #4a4e69;
-  padding-bottom: 1rem;
-}
-
-.game-section {
-  display: flex;
-  flex-direction: row;
-  gap: 3rem;
-  align-items: flex-start;
-  padding-bottom: 2rem;
-  border-bottom: 0.1rem solid #4a4e69;
-}
-
-@media (max-width: 800px) {
-  .game-section {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-.betting-section-wrapper {
-  flex: 1;
-  min-width: 30rem;
-}
-
-.betting-controls {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-  background-color: #3e3e70;
-  border-radius: 0.8rem;
-}
-
+/* ===========================================
+   ROULETTE WHEEL (already namespaced)
+   =========================================== */
 .roulette-container {
   width: var(--roulette-size);
   height: var(--roulette-size);
@@ -299,7 +273,6 @@ tbody tr:hover {
   border-right: 1.5rem solid transparent;
   border-top: 3rem solid var(--color-highlight);
   z-index: 1000;
-  filter: drop-shadow(0 0.3rem 0.2rem rgba(0, 0, 0, 0.5));
 }
 
 .roulette-wheel {
@@ -308,39 +281,23 @@ tbody tr:hover {
   border-radius: 50%;
   position: relative;
   transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
-  z-index: 10;
 }
 
 .segment-number {
   position: absolute;
   top: 50%;
   left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -1rem;
+  margin-left: -1.5rem;
+  width: 3rem;
+  height: 2rem;
   font-size: 1.6rem;
   font-weight: bold;
   color: white;
   text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 3rem;
-  height: 2rem;
-  margin-top: -1rem;
-  margin-left: -1.5rem;
-}
-
-.roulette-container::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8rem;
-  height: 8rem;
-  border-radius: 50%;
-  background: radial-gradient(circle, #888 0%, #333 100%);
-  border: 0.8rem solid #555;
-  z-index: 50;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.8), inset 0 0 1rem rgba(0, 0, 0, 0.8);
 }
 
 @media (max-width: 600px) {
@@ -348,21 +305,5 @@ tbody tr:hover {
     --roulette-size: 30rem;
     --half-size: 15rem;
     border-width: 0.5rem;
-  }
-
-  .roulette-container::after {
-    width: 6rem;
-    height: 6rem;
-    border-width: 0.5rem;
-  }
-
-  .segment-number {
-    font-size: 1.2rem;
-  }
-
-  .roulette-pointer {
-    border-left: 1rem solid transparent;
-    border-right: 1rem solid transparent;
-    border-top: 2rem solid var(--color-highlight);
   }
 }
